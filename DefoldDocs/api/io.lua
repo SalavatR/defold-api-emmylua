@@ -2,7 +2,7 @@
 ---Documentation for the Lua io standard library.
 ---From Lua 5.1 Reference Manual <https://www.lua.org/manual/5.1/>
 ---by Roberto Ierusalimschy, Luiz Henrique de Figueiredo, Waldemar Celes.
----Copyright Â© 2006-2012 Lua.org, PUC-Rio.
+---Copyright © 2006-2012 Lua.org, PUC-Rio.
 ---Freely available under the terms of the Lua license <https://www.lua.org/license.html>.
 ---@class io
 io = {}
@@ -20,7 +20,6 @@ function file:flush() end
 ---returns a new line from the file.
 ---Therefore, the construction
 ---for line in file:lines() do body end
----
 ---
 ---
 ---will iterate over all lines of the file.
@@ -54,7 +53,7 @@ function file:lines() end
 ---If number is zero,
 ---it reads nothing and returns an empty string,
 ---or  nil on end of file.
---- ...  
+--- ...  # 
 function file:read(...) end
 
 ---Sets and gets the file position,
@@ -81,8 +80,8 @@ function file:read(...) end
 ---beginning of the file (and returns 0);
 ---and the call file:seek("end") sets the position to the
 ---end of the file, and returns its size.
----@param whence  
----@param offset  
+---@param whence ? # 
+---@param offset ? # 
 function file:seek(whence, offset) end
 
 ---Sets the buffering mode for an output file.
@@ -102,8 +101,8 @@ function file:seek(whence, offset) end
 ---For the last two cases, size
 ---specifies the size of the buffer, in bytes.
 ---The default is an appropriate size.
----@param mode  
----@param size  
+---@param mode  # 
+---@param size ? # 
 function file:setvbuf(mode, size) end
 
 ---Writes the value of each of its arguments to
@@ -111,12 +110,12 @@ function file:setvbuf(mode, size) end
 ---The arguments must be strings or numbers.
 ---To write other values,
 ---use tostring or string.format before write.
---- ...  
+--- ...  # 
 function file:write(...) end
 
 ---Equivalent to file:close().
 ---Without a file, closes the default output file.
----@param file  
+---@param file ? # 
 function io.close(file) end
 
 ---Equivalent to file:flush over the default output file.
@@ -130,7 +129,7 @@ function io.flush() end
 ---it returns the current default input file.
 ---In case of errors this function raises the error,
 ---instead of returning an error code.
----@param file  
+---@param file ? # 
 function io.input(file) end
 
 ---Opens the given file name in read mode
@@ -141,7 +140,6 @@ function io.input(file) end
 ---for line in io.lines(filename) do body end
 ---
 ---
----
 ---will iterate over all lines of the file.
 ---When the iterator function detects the end of file,
 ---it returns  nil (to finish the loop) and automatically closes the file.
@@ -149,7 +147,7 @@ function io.input(file) end
 ---to io.input():lines();
 ---that is, it iterates over the lines of the default input file.
 ---In this case it does not close the file when the loop ends.
----@param filename  
+---@param filename ? # 
 function io.lines(filename) end
 
 ---This function opens a file,
@@ -176,12 +174,12 @@ function io.lines(filename) end
 ---which is needed in some systems to open the file in binary mode.
 ---This string is exactly what is used in the
 ---standard C function fopen.
----@param filename  
----@param mode  
+---@param filename  # 
+---@param mode ? # 
 function io.open(filename, mode) end
 
 ---Similar to io.input, but operates over the default output file.
----@param file  
+---@param file ? # 
 function io.output(file) end
 
 ---Starts program prog in a separated process and returns
@@ -191,12 +189,12 @@ function io.output(file) end
 ---(if mode is "w").
 ---This function is system dependent and is not available
 ---on all platforms.
----@param prog  
----@param mode  
+---@param prog  # 
+---@param mode ? # 
 function io.popen(prog, mode) end
 
 ---Equivalent to io.input():read.
---- ...  
+--- ...  # 
 function io.read(...) end
 
 ---Returns a handle for a temporary file.
@@ -208,11 +206,11 @@ function io.tmpfile() end
 ---Returns the string "file" if obj is an open file handle,
 ---"closed file" if obj is a closed file handle,
 ---or  nil if obj is not a file handle.
----@param obj  
+---@param obj  # 
 function io.type(obj) end
 
 ---Equivalent to io.output():write.
---- ...  
+--- ...  # 
 function io.write(...) end
 
 

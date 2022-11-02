@@ -19,7 +19,7 @@ profiler.VIEW_MODE_MINIMIZED = nil
 ---The profiler is a real-time tool that shows the numbers of milliseconds spent
 ---in each scope per frame as well as counters. The profiler is very useful for
 ---tracking down performance and resource problems.
----@param enabled boolean true to enable, false to disable
+---@param enabled boolean # true to enable, false to disable
 function profiler.enable_ui(enabled) end
 
 ---Get the percent of CPU usage by the application, as reported by the OS.
@@ -28,7 +28,7 @@ function profiler.enable_ui(enabled) end
 ---by default in the debug version of the engine. It can be enabled in release version as well
 ---by checking track_cpu under profiler in the game.project file.
 ---(This means that the engine will sample the CPU usage in intervalls during execution even in release mode.)
----@return number of CPU used by the application
+---@return number # of CPU used by the application
 function profiler.get_cpu_usage() end
 
 ---Get the amount of memory used (resident/working set) by the application in bytes, as reported by the OS.
@@ -39,19 +39,30 @@ function profiler.get_cpu_usage() end
 --- iOS MacOSAndrod Linux <https://en.wikipedia.org/wiki/Resident_set_size>        Resident memory
 --- Windows <https://en.wikipedia.org/wiki/Working_set>                      Working set
 --- HTML5                         Not available
----@return number used by the application
+---@return number # used by the application
 function profiler.get_memory_usage() end
 
+---Send a text to the profiler
+---@param text string # the string to send to the profiler
+function profiler.log_text(text) end
+
 ---Get the number of recorded frames in the on-screen profiler ui recording buffer
----@return number the number of recorded frames, zero if on-screen profiler is disabled
+---@return number # the number of recorded frames, zero if on-screen profiler is disabled
 function profiler.recorded_frame_count() end
 
+---Starts a profile scope.
+---@param name string # The name of the scope
+function profiler.scope_begin(name) end
+
+---End the current profile scope.
+function profiler.scope_end() end
+
 ---Set the on-screen profile mode - run, pause, record or show peak frame
----@param mode constant the mode to set the ui profiler in
+---@param mode constant # the mode to set the ui profiler in
 function profiler.set_ui_mode(mode) end
 
 ---Set the on-screen profile view mode - minimized or expanded
----@param mode constant the view mode to set the ui profiler in
+---@param mode constant # the view mode to set the ui profiler in
 function profiler.set_ui_view_mode(mode) end
 
 ---Shows or hides the time the engine waits for vsync in the on-screen profiler
@@ -64,12 +75,12 @@ function profiler.set_ui_view_mode(mode) end
 ---This setting also effects the display of recorded frames but does not affect the actual
 ---recorded frames so it is possible to toggle this on and off when viewing recorded frames.
 ---By default the vsync wait times is displayed in the profiler.
----@param visible boolean true to include it in the display, false to hide it.
+---@param visible boolean # true to include it in the display, false to hide it.
 function profiler.set_ui_vsync_wait_visible(visible) end
 
 ---Pauses and displays a frame from the recording buffer in the on-screen profiler ui
 ---The frame to show can either be an absolute frame or a relative frame to the current frame.
----@param frame_index table a table where you specify one of the following parameters:
+---@param frame_index table # a table where you specify one of the following parameters:
 function profiler.view_recorded_frame(frame_index) end
 
 

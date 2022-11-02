@@ -162,6 +162,7 @@ function render.draw_debug3d() end
 ---@param material_id string|hash material id to enable
 function render.enable_material(material_id) end
 
+render.enable_material()
 ---Enables a particular render state. The state will be enabled until disabled.
 ---@param state constant state to enable
 function render.enable_state(state) end

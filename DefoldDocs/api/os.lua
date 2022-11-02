@@ -2,7 +2,7 @@
 ---Documentation for the Lua os standard library.
 ---From Lua 5.1 Reference Manual <https://www.lua.org/manual/5.1/>
 ---by Roberto Ierusalimschy, Luiz Henrique de Figueiredo, Waldemar Celes.
----Copyright Â© 2006-2012 Lua.org, PUC-Rio.
+---Copyright © 2006-2012 Lua.org, PUC-Rio.
 ---Freely available under the terms of the Lua license <https://www.lua.org/license.html>.
 ---@class os
 os = {}
@@ -33,15 +33,15 @@ function os.clock() end
 ---date returns a reasonable date and time representation that depends on
 ---the host system and on the current locale
 ---(that is, os.date() is equivalent to os.date("%c")).
----@param format  
----@param time  
+---@param format ? # 
+---@param time ? # 
 function os.date(format, time) end
 
 ---Returns the number of seconds from time t1 to time t2.
 ---In POSIX, Windows, and some other systems,
 ---this value is exactly t2-t1.
----@param t2  
----@param t1  
+---@param t2  # 
+---@param t1  # 
 function os.difftime(t2, t1) end
 
 ---This function is equivalent to the C function system.
@@ -49,7 +49,7 @@ function os.difftime(t2, t1) end
 ---It returns a status code, which is system-dependent.
 ---If command is absent, then it returns nonzero if a shell is available
 ---and zero otherwise.
----@param command  
+---@param command ? # 
 function os.execute(command) end
 
 ---Calls the C function exit,
@@ -61,26 +61,26 @@ function os.execute(command) end
 ---The recommended way to terminate your game is by using
 ---the exit message which does a graceful shutdown.
 ---msg.post("@system:", "exit", {code = 0})
----@param code  
+---@param code ? # 
 function os.exit(code) end
 
 ---Returns the value of the process environment variable varname,
 ---or  nil if the variable is not defined.
----@param varname  
+---@param varname  # 
 function os.getenv(varname) end
 
 ---Deletes the file or directory with the given name.
 ---Directories must be empty to be removed.
 ---If this function fails, it returns  nil,
 ---plus a string describing the error.
----@param filename  
+---@param filename  # 
 function os.remove(filename) end
 
 ---Renames file or directory named oldname to newname.
 ---If this function fails, it returns  nil,
 ---plus a string describing the error.
----@param oldname  
----@param newname  
+---@param oldname  # 
+---@param newname  # 
 function os.rename(oldname, newname) end
 
 ---Sets the current locale of the program.
@@ -98,8 +98,8 @@ function os.rename(oldname, newname) end
 ---When called with  nil as the first argument,
 ---this function only returns the name of the current locale
 ---for the given category.
----@param locale  
----@param category  
+---@param locale  # 
+---@param category ? # 
 function os.setlocale(locale, category) end
 
 ---Returns the current time when called without arguments,
@@ -113,7 +113,7 @@ function os.setlocale(locale, category) end
 ---In other systems, the meaning is not specified,
 ---and the number returned by time can be used only as an argument to
 ---date and difftime.
----@param table  
+---@param table ? # 
 function os.time(table) end
 
 ---Returns a string with a file name that can

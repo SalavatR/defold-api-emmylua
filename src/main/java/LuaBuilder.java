@@ -14,39 +14,97 @@ import java.util.Comparator;
 
 public class LuaBuilder {
 
-
     private void buildParameterModel(ParameterModel pm, StringBuilder sb, HtmlToPlainText f) {
-        for(int i=0;i<pm.getTypes().size();i++){
-            sb.append(pm.getTypes().get(i));
-            if(i!= pm.getTypes().size()-1){
+
+        String doc = pm.getDoc();
+        for (int i = 0; i < pm.getTypes().size(); i++) {
+
+            String type = pm.getTypes().get(i);
+            if (type.equals("function(function())")) {
+                type = "fun(fun:fun())";
+            }
+            else if (type.contains("function")) {
+                String type_base = type;
+
+                if (type_base.contains("function"))
+                    if (type_base.endsWith(")") && type_base.chars().filter(ch -> ch == '(').count() < type_base.chars()
+                            .filter(ch -> ch == ')').count()) {
+                        type_base = type_base.substring(0, type_base.length() - 1);
+                    }
+                if (!type_base.endsWith(")")) {
+                    type_base = type_base + ")";
+                }
+                System.out.println(type);
+                type = "fun(";
+                if (pm.isOptional()) {
+                    type = "(" + type;
+                }
+                int index_open_code = type_base.indexOf("(");
+                int index_close_code = type_base.indexOf(",") >= 0 ? type_base.indexOf(",") : type_base.indexOf(")");
+                int index_open_type = doc.indexOf("<span class=\"type\">");
+                int index_close_type = doc.indexOf("</span>");
+                do {
+
+                    if (index_open_code >= 0 && index_close_code - 1 != index_open_code) {
+                        type = type + type_base.substring(index_open_code + 1, index_close_code);
+                        type = type + ": ";
+                        if (index_open_type >= 0)
+                            type = type + doc.substring(index_open_type + 19, index_close_type);
+                        else if (index_close_code - 1 != index_open_code)
+                            type = type + "any";
+                    }
+                    index_open_code = type_base.indexOf(",", index_close_code);
+                    index_close_code = type_base.indexOf(",", index_close_code + 1) >= 0
+                            ? type_base.indexOf(",", index_close_code + 1)
+                            : type_base.indexOf(")");
+                    index_open_type = doc.indexOf("<span class=\"type\">", index_open_type + 19);
+                    index_close_type = doc.indexOf("</span>", index_close_type + 7);
+
+                    if (index_open_code >= 0) {
+                        type = type + ",";
+                    }
+                } while (index_open_code >= 0);
+
+                type = type + ")";
+                if (pm.isOptional()) {
+                    type = type + ")";
+                }
+
+                System.out.println(type);
+            }
+            sb.append(type);
+            if (i != pm.getTypes().size() - 1) {
                 sb.append("|");
             }
         }
-        String doc = pm.getDoc();
-        if(doc.contains("<ul>")){
-            doc = doc.substring(0,doc.indexOf("<ul>"));
+        if (pm.isOptional()) {
+            sb.append("?");
         }
-        if(doc.contains("<dl>")){
-            doc = doc.substring(0,doc.indexOf("<dl>"));
+        if (doc.contains("<ul>")) {
+            doc = doc.substring(0, doc.indexOf("<ul>"));
         }
-        sb.append(" ").append(f.getPlainText(doc).replaceAll("\n---" , " "));
-        while (sb.charAt(sb.length()-1) == '\n'){sb.deleteCharAt(sb.length()-1);}
+        if (doc.contains("<dl>")) {
+            doc = doc.substring(0, doc.indexOf("<dl>"));
+        }
+        sb.append(" # ").append(f.getPlainText(doc).replaceAll("\n---", " "));
+        while (sb.charAt(sb.length() - 1) == '\n') {
+            sb.deleteCharAt(sb.length() - 1);
+        }
         sb.append("\n");
     }
 
-
     public String build(DocModel docModel) {
-        //do not add global builtins table
+        // do not add global builtins table
         boolean isBuiltins = docModel.getInfoModel().getNamespace().equals("builtins");
         StringBuilder sb = new StringBuilder();
         StringBuilder inlineTables = new StringBuilder().append("\n");
         HtmlToPlainText f = new HtmlToPlainText();
         sb.append("---").append(f.getPlainText(docModel.getInfoModel().getBrief())).append("\n");
         sb.append("---").append(f.getPlainText(docModel.getInfoModel().getDescription())).append("\n");
-        if(!isBuiltins){
+        if (!isBuiltins) {
             sb.append("---@class ").append(docModel.getInfoModel().getNamespace()).append("\n");
             sb.append("").append(docModel.getInfoModel().getNamespace()).append(" = {}").append("\n");
-        }else{
+        } else {
             sb.append("\n");
         }
 
@@ -56,15 +114,17 @@ public class LuaBuilder {
                 String funDesc = f.getPlainText(em.getDescription());
                 if (!funDesc.equals("")) {
                     sb.append("---").append(f.getPlainText(em.getDescription()));
-                    while (sb.charAt(sb.length()-1) == '\n'){sb.deleteCharAt(sb.length()-1);}
+                    while (sb.charAt(sb.length() - 1) == '\n') {
+                        sb.deleteCharAt(sb.length() - 1);
+                    }
                     sb.append("\n");
                 }
                 if (em.getParameters().size() != 0) {
                     for (ParameterModel pm : em.getParameters()) {
-                        //do not add annotation for ...
-                        if(!pm.getFormatName().equals("...")){
+                        // do not add annotation for ...
+                        if (!pm.getFormatName().equals("...")) {
                             sb.append("---@param ");
-                        }else{
+                        } else {
                             sb.append("--- ");
                         }
                         sb.append(pm.getFormatName()).append(" ");
@@ -80,6 +140,7 @@ public class LuaBuilder {
                 }
 
                 sb.append("function ").append(em.getName()).append("(");
+                System.out.println(em.getName());
                 for (ParameterModel pm : em.getParameters()) {
                     sb.append(pm.getFormatName()).append(", ");
                 }
@@ -99,7 +160,7 @@ public class LuaBuilder {
         }
 
         sb.append(inlineTables.toString()).append("\n");
-        if(!isBuiltins){
+        if (!isBuiltins) {
             sb.append("\n").append("return ").append(docModel.getInfoModel().getNamespace());
         }
         return sb.toString();
@@ -162,7 +223,7 @@ public class LuaBuilder {
                     td++;
                 } else if (name.equals("thead")) {
                     for (int i = 0; i < TABLE_WIDTH * 2; i++) {
-                        //  append("-");
+                        // append("-");
                     }
                 }
             }
@@ -170,11 +231,12 @@ public class LuaBuilder {
             // hit when all of the node's children (if any) have been visited
             public void tail(Node node, int depth) {
                 String name = node.nodeName();
-                //if (StringUtil.in(name, "br", "dd", "dt", "p", "h1", "h2", "h3", "h4", "h5"))
+                // if (StringUtil.in(name, "br", "dd", "dt", "p", "h1", "h2", "h3", "h4", "h5"))
                 // append("\n");
                 if (name.equals("a"))
                     append(String.format(" <%s>", node.absUrl("href")));
-                if (name.equals("table")) insideTable = false;
+                if (name.equals("table"))
+                    insideTable = false;
                 else if (name.equals("td") || name.equals("th")) {
                     for (int i = 1; i < td; i++) {
                         for (int j = 1; j <= TABLE_WIDTH - prevTextInsodeTdSize; j++) {
@@ -187,9 +249,9 @@ public class LuaBuilder {
                 } else if (name.equals("tr")) {
                     td = 0;
                     prevTextInsodeTdSize = 0;
-                    //append("\n");
+                    // append("\n");
                     for (int i = 0; i < TABLE_WIDTH * 2; i++) {
-                        //   append("-");
+                        // append("-");
                     }
                 }
             }
@@ -201,7 +263,8 @@ public class LuaBuilder {
             // appends text to the string builder with a simple word wrap method
             private void append(String text, boolean addEmpty) {
                 if (text.startsWith("\n"))
-                    width = 0; // reset counter if starts with a newline. only from formats above, not in natural text
+                    width = 0; // reset counter if starts with a newline. only from formats above, not in
+                               // natural text
                 if (!addEmpty && (text.equals(" ") &&
                         (accum.length() == 0 || StringUtil.in(accum.substring(accum.length() - 1), " ", "\n"))))
                     return; // don't accumulate long runs of empty spaces

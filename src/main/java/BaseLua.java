@@ -5,12 +5,16 @@ public class BaseLua {
             "---@field x number\n" +
             "---@field y number\n" +
             "---@field z number\n" +
+            "---@operator sub(vector3): vector3\n" +
+            "---@operator add(vector3): vector3\n" +
             "\n" +
             "---@class vector4\n" +
             "---@field x number\n" +
             "---@field y number\n" +
             "---@field z number\n" +
             "---@field w number\n" +
+            "---@operator sub(vector4): vector4\n" +
+            "---@operator add(vector4): vector4\n" +
             "\n" +
             "---@class quaternion\n" +
             "---@field x number\n" +
@@ -20,10 +24,10 @@ public class BaseLua {
             "\n" +
             "---@alias quat quaternion\n" +
             "\n" +
-            "---@class url\n" +
-            "---@field socket\n" +
-            "---@field path\n" +
-            "---@field fragment\n" +
+            "---@class url string|hash\n" +
+            "---@field socket string|hash\n" +
+            "---@field path string|hash\n" +
+            "---@field fragment string|hash\n" +
             "\n" +
             "---@alias hash userdata\n" +
             "---@alias constant userdata\n" +

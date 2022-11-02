@@ -17,11 +17,11 @@ tilemap.V_FLIP = nil
 ---the tile map width and the tile map height.
 ---The resulting values take all tile map layers into account, meaning that
 ---the bounds are calculated as if all layers were collapsed into one.
----@param url string|hash|url the tile map
----@return number x coordinate of the bottom left corner
----@return number y coordinate of the bottom left corner
----@return number number of columns (width) in the tile map
----@return number number of rows (height) in the tile map
+---@param url string|hash|url # the tile map
+---@return number # x coordinate of the bottom left corner
+---@return number # y coordinate of the bottom left corner
+---@return number # number of columns (width) in the tile map
+---@return number # number of rows (height) in the tile map
 function tilemap.get_bounds(url) end
 
 ---Get the tile set at the specified position in the tilemap.
@@ -29,11 +29,11 @@ function tilemap.get_bounds(url) end
 ---with index 1, 1. (see tilemap.set_tile() <>)
 ---Which tile map and layer to query is identified by the URL and the
 ---layer name parameters.
----@param url string|hash|url the tile map
----@param layer string|hash name of the layer for the tile
----@param x number x-coordinate of the tile
----@param y number y-coordinate of the tile
----@return number index of the tile
+---@param url string|hash|url # the tile map
+---@param layer string|hash # name of the layer for the tile
+---@param x number # x-coordinate of the tile
+---@param y number # y-coordinate of the tile
+---@return number # index of the tile
 function tilemap.get_tile(url, layer, x, y) end
 
 ---Replace a tile in a tile map with a new tile.
@@ -58,18 +58,18 @@ function tilemap.get_tile(url, layer, x, y) end
 ---Transform bitmask is arithmetic sum of one or both FLIP constants (tilemap.H_FLIP, tilemap.V_FLIP) and/or one of ROTATION constants
 ---(tilemap.ROTATE_90, tilemap.ROTATE_180, tilemap.ROTATE_270).
 ---Flip always applies before rotation (clockwise).
----@param url string|hash|url the tile map
----@param layer string|hash name of the layer for the tile
----@param x number x-coordinate of the tile
----@param y number y-coordinate of the tile
----@param tile number index of new tile to set. 0 resets the cell
----@param transform_bitmask number optional flip and/or rotation should be applied to the tile
+---@param url string|hash|url # the tile map
+---@param layer string|hash # name of the layer for the tile
+---@param x number # x-coordinate of the tile
+---@param y number # y-coordinate of the tile
+---@param tile number # index of new tile to set. 0 resets the cell
+---@param transform_bitmask number? # optional flip and/or rotation should be applied to the tile
 function tilemap.set_tile(url, layer, x, y, tile, transform_bitmask) end
 
 ---Sets the visibility of the tilemap layer
----@param url string|hash|url the tile map
----@param layer string|hash name of the layer for the tile
----@param visible boolean should the layer be visible
+---@param url string|hash|url # the tile map
+---@param layer string|hash # name of the layer for the tile
+---@param visible boolean # should the layer be visible
 function tilemap.set_visible(url, layer, visible) end
 
 

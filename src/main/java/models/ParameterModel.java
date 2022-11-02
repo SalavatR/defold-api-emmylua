@@ -29,8 +29,11 @@ public class ParameterModel {
         if (name.contains("[")) {
             return name.replaceAll("\\[|\\]", "");
         }
-
         return name;
+    }
+
+    public boolean isOptional(){
+        return name.contains("[");
     }
 
 }
