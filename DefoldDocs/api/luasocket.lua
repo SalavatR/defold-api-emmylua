@@ -1,8 +1,3 @@
-------@meta
-
----
----
----
 ---LuaSocket API documentation
 ---LuaSocket <https://github.com/diegonehab/luasocket> is a Lua extension library that provides
 ---support for the TCP and UDP transport layers. Defold provides the "socket" namespace in

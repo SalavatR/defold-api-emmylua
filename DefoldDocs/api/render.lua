@@ -1,8 +1,3 @@
-------@meta
-
----
----
----
 ---Rendering API documentation
 ---Rendering functions, messages and constants. The "render" namespace is
 ---accessible only from render scripts.

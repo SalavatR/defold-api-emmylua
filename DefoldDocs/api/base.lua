@@ -59,7 +59,9 @@
 ---@param v ANY
 ---@param message string
 ---@return ANY
-function assert(v,message) return v end---@param self object
+function assert(v,message) return v end
+
+---@param self object
 function init(self) end
 
 ---@param self object

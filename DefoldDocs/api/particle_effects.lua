@@ -1,8 +1,3 @@
-------@meta
-
----
----
----
 ---Particle effects API documentation
 ---Functions for controlling particle effect component playback and
 ---shader constants.

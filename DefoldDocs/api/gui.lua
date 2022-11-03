@@ -1,8 +1,3 @@
-------@meta
-
----
----
----
 ---GUI API documentation
 ---GUI API documentation
 ---@class gui

@@ -1,8 +1,3 @@
-------@meta
-
----
----
----
 ---Tilemap API documentation
 ---Functions and messages used to manipulate tile map components.
 ---@class tilemap

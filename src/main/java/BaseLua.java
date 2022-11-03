@@ -63,7 +63,8 @@ public class BaseLua {
             "---@param v ANY\n" +
             "---@param message string\n" +
             "---@return ANY\n" +
-            "function assert(v,message) return v end"+
+            "function assert(v,message) return v end\n"+
+            "\n" +
             "---@param self object\n"+
             "function init(self) end\n" +
             "\n" +

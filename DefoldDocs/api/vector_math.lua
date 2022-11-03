@@ -1,8 +1,3 @@
-------@meta
-
----
----
----
 ---Vector math API documentation
 ---Functions for mathematical operations on vectors, matrices and quaternions.
 ---

@@ -1,8 +1,3 @@
-------@meta
-
----
----
----
 ---Image API documentation
 ---Functions for creating image objects.
 ---@class image

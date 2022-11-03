@@ -1,8 +1,3 @@
-------@meta
-
----
----
----
 ---Sound API documentation
 ---Sound API documentation
 ---@class sound

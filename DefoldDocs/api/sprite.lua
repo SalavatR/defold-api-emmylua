@@ -1,8 +1,3 @@
-------@meta
-
----
----
----
 ---Sprite API documentation
 ---Sprite API documentation
 ---@class sprite

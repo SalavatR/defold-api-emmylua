@@ -1,8 +1,3 @@
-------@meta
-
----
----
----
 ---HTML5 API documentation
 ---HTML5 platform specific functions.
 --- The following functions are only available on HTML5 builds, the html5.* Lua namespace will not be available on other platforms.

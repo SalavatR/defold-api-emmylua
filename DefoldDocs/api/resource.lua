@@ -1,8 +1,3 @@
-------@meta
-
----
----
----
 ---Resource API documentation
 ---Functions and constants to access resources.
 ---@class resource
