@@ -1,3 +1,8 @@
+------@meta
+
+---
+---
+---
 ---Timer API documentation
 ---Timers allow you to set a delay and a callback to be called when the timer completes.
 ---The timers created with this API are updated with the collection timer where they

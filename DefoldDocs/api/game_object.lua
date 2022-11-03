@@ -1,3 +1,8 @@
+------@meta
+
+---
+---
+---
 ---Game object API documentation
 ---Functions, core hooks, messages and constants for manipulation of
 ---game objects. The "go" namespace is accessible from game object script

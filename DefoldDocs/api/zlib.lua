@@ -1,3 +1,8 @@
+------@meta
+
+---
+---
+---
 ---Zlib compression API documentation
 ---Functions for compression and decompression of string buffers.
 ---@class zlib

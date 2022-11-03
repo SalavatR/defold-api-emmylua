@@ -1,3 +1,8 @@
+------@meta
+
+---
+---
+---
 ---JSON API documentation
 ---Manipulation of JSON data strings.
 ---@class json

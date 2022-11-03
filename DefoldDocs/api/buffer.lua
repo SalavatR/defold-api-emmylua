@@ -1,3 +1,8 @@
+------@meta
+
+---
+---
+---
 ---Buffer API documentation
 ---Functions for manipulating buffers and streams
 ---@class buffer

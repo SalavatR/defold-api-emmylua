@@ -1,3 +1,6 @@
+------@meta
+---
+---
 ---@class vector3
 ---@field x number
 ---@field y number
@@ -56,4 +59,23 @@
 ---@param v ANY
 ---@param message string
 ---@return ANY
-function assert(v,message) return v end
+function assert(v,message) return v end---@param self object
+function init(self) end
+
+---@param self object
+---@param dt number
+function update(self, dt) end
+
+---@param self object
+---@param message_id hash
+---@param message table
+---@param sender url
+function on_message(self, message_id, message, sender) end
+
+---@param self object
+---@param action_id hash
+---@param action table
+function on_input(self, action_id, action) end
+
+---@param self object
+function final(self) end;

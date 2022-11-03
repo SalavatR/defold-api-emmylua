@@ -1,7 +1,11 @@
 import models.ParameterModel;
 
 public class BaseLua {
-    public static String BASE = "---@class vector3\n" +
+    public static String BASE = 
+            "------@meta\n" +
+            "---\n" +
+            "---\n" +
+            "---@class vector3\n" +
             "---@field x number\n" +
             "---@field y number\n" +
             "---@field z number\n" +
@@ -59,5 +63,25 @@ public class BaseLua {
             "---@param v ANY\n" +
             "---@param message string\n" +
             "---@return ANY\n" +
-            "function assert(v,message) return v end";
+            "function assert(v,message) return v end"+
+            "---@param self object\n"+
+            "function init(self) end\n" +
+            "\n" +
+            "---@param self object\n" +
+            "---@param dt number\n" +
+            "function update(self, dt) end\n" +
+            "\n" +
+            "---@param self object\n" +
+            "---@param message_id hash\n" +
+            "---@param message table\n" +
+            "---@param sender url\n" +
+            "function on_message(self, message_id, message, sender) end\n" +
+            "\n" +
+            "---@param self object\n" +
+            "---@param action_id hash\n" +
+            "---@param action table\n" +
+            "function on_input(self, action_id, action) end\n" +
+            "\n" +
+            "---@param self object\n" +
+            "function final(self) end;\n";
 }

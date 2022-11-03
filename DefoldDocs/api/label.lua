@@ -1,3 +1,8 @@
+------@meta
+
+---
+---
+---
 ---Label API documentation
 ---Label API documentation
 ---@class label

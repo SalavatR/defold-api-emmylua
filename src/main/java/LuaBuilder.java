@@ -99,6 +99,7 @@ public class LuaBuilder {
         StringBuilder sb = new StringBuilder();
         StringBuilder inlineTables = new StringBuilder().append("\n");
         HtmlToPlainText f = new HtmlToPlainText();
+        sb.append("------@meta\n\n---\n---\n---\n");
         sb.append("---").append(f.getPlainText(docModel.getInfoModel().getBrief())).append("\n");
         sb.append("---").append(f.getPlainText(docModel.getInfoModel().getDescription())).append("\n");
         if (!isBuiltins) {

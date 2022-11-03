@@ -1,3 +1,8 @@
+------@meta
+
+---
+---
+---
 ---HTTP API documentation
 ---Functions for performing HTTP and HTTPS requests.
 ---@class http

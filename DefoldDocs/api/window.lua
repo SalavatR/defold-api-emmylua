@@ -1,3 +1,8 @@
+------@meta
+
+---
+---
+---
 ---Window API documentation
 ---Functions and constants to access the window, window event listeners
 ---and screen dimming.

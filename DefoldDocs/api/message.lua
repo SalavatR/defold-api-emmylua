@@ -1,3 +1,8 @@
+------@meta
+
+---
+---
+---
 ---Messaging API documentation
 ---Functions for passing messages and constructing URL objects.
 ---@class msg

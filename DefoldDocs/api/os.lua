@@ -1,3 +1,8 @@
+------@meta
+
+---
+---
+---
 ---Lua os standard library
 ---Documentation for the Lua os standard library.
 ---From Lua 5.1 Reference Manual <https://www.lua.org/manual/5.1/>

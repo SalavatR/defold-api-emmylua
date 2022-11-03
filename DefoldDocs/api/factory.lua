@@ -1,3 +1,8 @@
+------@meta
+
+---
+---
+---
 ---Factory API documentation
 ---Functions for controlling factory components which are used to
 ---dynamically spawn game objects into the runtime.
