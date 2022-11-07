@@ -64,6 +64,9 @@ public class Main {
         IGNORE_DOCS.add("dmTransform_doc.json");
         IGNORE_DOCS.add("dmGameSystem_doc.json");
         IGNORE_DOCS.add("dmDDF_doc.json");
+        IGNORE_DOCS.add("os_doc.json");
+        IGNORE_DOCS.add("bit_doc.json");
+        IGNORE_DOCS.add("io_doc.json");
         IGNORE_DOCS.add("math_doc.json"); //lua plugin already have it
     }
 
